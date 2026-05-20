@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import EndScreen from './components/EndScreen'
 
 const cards = [
   {id: 1, question: "What is water made of?", answer:"H20"},
@@ -43,18 +44,18 @@ function App() {
       </div>
     )}
     {currentIndex>= cards.length && (
-      <div>
-        <p> You reviewed {cards.length} cards</p>
-        <p>Correct: {Correct}</p>
-        <p>Wrong: {Wrong}</p>
-        <button onClick={() => {
+      <EndScreen
+        correct = {Correct}
+        wrong = {Wrong}
+        totalCards = {cards.length}
+        onTryAgain={() => {
           setCurrentIndex(0)
           setShowAnswer(false)
           setShowCorrect(0)
           setShowWrong(0)
-        }}>Try Again</button>
-      </div>
-    )} 
+        }}
+      />
+    )}
   </div>
   )
 }
