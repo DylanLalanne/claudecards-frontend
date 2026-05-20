@@ -11,9 +11,12 @@ function App() {
   return <div><h1>
   {cards[currentIndex].question}
   {showAnswer && <p>{cards[currentIndex].answer}</p>}
-  <button onClick={() => setShowAnswer(true)}>Show Answer</button>
+  <button onClick={() => setShowAnswer(!showAnswer)}>{showAnswer ? "Hide Answer" : "Show Answer"}</button>
   <button onClick={() => 
   {setCurrentIndex(currentIndex+1) 
+  setShowAnswer(false)}}>Previous Card</button>
+  <button onClick={() => 
+  {setCurrentIndex(currentIndex-1) 
   setShowAnswer(false)}}>Next Card</button>
   </h1></div>
   
