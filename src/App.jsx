@@ -20,11 +20,11 @@ function App() {
         {showAnswer && <p>{cards[currentIndex].answer}</p>}
         <button onClick={() => setShowAnswer(!showAnswer)}>{showAnswer ? "Hide Answer" : "Show Answer"}</button>
         <button onClick={() => 
-        {setCurrentIndex(currentIndex-1) 
-        setShowAnswer(false)}}>Previous Card</button>
+        {setCurrentIndex(Math.max(0,currentIndex-1)) 
+        setShowAnswer(false)}}>Previous</button>
         <button onClick={() => 
         {setCurrentIndex(currentIndex+1) 
-        setShowAnswer(false)}}>Next Card</button>
+        setShowAnswer(false)}}>Skip</button>
       </div>
     )}
     {showAnswer && (
