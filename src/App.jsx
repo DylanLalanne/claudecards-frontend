@@ -12,33 +12,50 @@ function App() {
   const [showDeck, setShowShowDeck] = useState(false)//variable
   const [Correct, setShowCorrect] = useState(0)//variable
   const [Wrong, setShowWrong] = useState(0)//variable
-  return <div><h1>
-  {cards[currentIndex].question}
-  {showAnswer && <p>{cards[currentIndex].answer}</p>}
-  <button onClick={() => setShowAnswer(!showAnswer)}>{showAnswer ? "Hide Answer" : "Show Answer"}</button>
-  <button onClick={() => 
-  {setCurrentIndex(currentIndex+1) 
-  setShowAnswer(false)}}>Previous Card</button>
-  <button onClick={() => 
-  {setCurrentIndex(currentIndex-1) 
-  setShowAnswer(false)}}>Next Card</button>
-  {showAnswer && (
+  return(
     <div>
-      <button onClick={() => {{
-        setShowCorrect(Correct+1)
-        setShowAnswer(false)
-        setCurrentIndex(currentIndex + 1)
-      }}}>Got it Right</button>
-      <button onClick={() => {{ 
-      setShowWrong(Wrong+1)
-      setShowAnswer(false)
-      setCurrentIndex(currentIndex + 1)
-      }}}>Got it Wrong</button>
-    </div>
-  )}
-  
-  </h1></div>
-  
+      {currentIndex < cards.length && (
+      <div>
+        {cards[currentIndex].question}
+        {showAnswer && <p>{cards[currentIndex].answer}</p>}
+        <button onClick={() => setShowAnswer(!showAnswer)}>{showAnswer ? "Hide Answer" : "Show Answer"}</button>
+        <button onClick={() => 
+        {setCurrentIndex(currentIndex-1) 
+        setShowAnswer(false)}}>Previous Card</button>
+        <button onClick={() => 
+        {setCurrentIndex(currentIndex+1) 
+        setShowAnswer(false)}}>Next Card</button>
+      </div>
+    )}
+    {showAnswer && (
+      <div>
+        <button onClick={() => {{
+          setShowCorrect(Correct+1)
+          setShowAnswer(false)
+          setCurrentIndex(currentIndex + 1)
+          }}}>Got it Right</button>
+          <button onClick={() => {{ 
+          setShowWrong(Wrong+1)
+          setShowAnswer(false)
+          setCurrentIndex(currentIndex + 1)
+          }}}>Got it Wrong
+        </button>
+      </div>
+    )}
+    {currentIndex>= cards.length && (
+      <div>
+        <p> You reviewed {cards.length} cards</p>
+        <p>Correct: {Correct}</p>
+        <p>Wrong: {Wrong}</p>
+        <button onClick={() => {
+          setCurrentIndex(0)
+          setShowAnswer(false)
+          setShowCorrect(0)
+          setShowWrong(0)
+        }}>Try Again</button>
+      </div>
+    )} 
+  </div>
+  )
 }
-
 export default App
