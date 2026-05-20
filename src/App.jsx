@@ -1,5 +1,6 @@
 import {useState} from 'react'
-import EndScreen from './components/EndScreen'
+import EndScreen from './components/CardEndScreen'
+import FlashCard from './components/FlashCard'
 
 const cards = [
   {id: 1, question: "What is water made of?", answer:"H20"},
@@ -17,9 +18,12 @@ function App() {
     <div>
       {currentIndex < cards.length && (
       <div>
-        {cards[currentIndex].question}
-        {showAnswer && <p>{cards[currentIndex].answer}</p>}
-        <button onClick={() => setShowAnswer(!showAnswer)}>{showAnswer ? "Hide Answer" : "Show Answer"}</button>
+        <FlashCard
+          question={cards[currentIndex].question}
+          answer={cards[currentIndex].answer}
+          showAnswer={showAnswer}
+          onToggleAnswer={() => setShowAnswer (!showAnswer)}
+        />
         <button onClick={() => 
         {setCurrentIndex(Math.max(0,currentIndex-1)) 
         setShowAnswer(false)}}>Previous</button>
