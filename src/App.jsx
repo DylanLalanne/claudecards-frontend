@@ -8,7 +8,14 @@ const cards = [
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0)//increment
   const [showAnswer, setShowAnswer] = useState(false)//bool
-  return <div><h1>{cards[currentIndex].question}</h1></div>
+  return <div><h1>
+  {cards[currentIndex].question}
+  {showAnswer && <p>{cards[currentIndex].answer}</p>}
+  <button onClick={() => setShowAnswer(true)}>Show Answer</button>
+  <button onClick={() => 
+  {setCurrentIndex(currentIndex+1) 
+  setShowAnswer(false)}}>Next Card</button>
+  </h1></div>
   
 }
 
