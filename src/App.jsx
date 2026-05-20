@@ -7,7 +7,11 @@ const cards = [
 ]
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0)//increment
-  const [showAnswer, setShowAnswer] = useState(false)//bool
+  const [showAnswer, setShowAnswer] = useState(false)//variable
+  const [showScore, setShowScore] = useState(0)//score
+  const [showDeck, setShowShowDeck] = useState(false)//variable
+  const [Correct, setShowCorrect] = useState(0)//variable
+  const [Wrong, setShowWrong] = useState(0)//variable
   return <div><h1>
   {cards[currentIndex].question}
   {showAnswer && <p>{cards[currentIndex].answer}</p>}
@@ -18,6 +22,21 @@ function App() {
   <button onClick={() => 
   {setCurrentIndex(currentIndex-1) 
   setShowAnswer(false)}}>Next Card</button>
+  {showAnswer && (
+    <div>
+      <button onClick={() => {{
+        setShowCorrect(Correct+1)
+        setShowAnswer(false)
+        setCurrentIndex(currentIndex + 1)
+      }}}>Got it Right</button>
+      <button onClick={() => {{ 
+      setShowWrong(Wrong+1)
+      setShowAnswer(false)
+      setCurrentIndex(currentIndex + 1)
+      }}}>Got it Wrong</button>
+    </div>
+  )}
+  
   </h1></div>
   
 }
