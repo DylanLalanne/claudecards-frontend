@@ -15,26 +15,34 @@ function Login() {
         if (!email){
             emailErrors.push ('Email is required')
         }
-        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ // uses REGEX to allow whitespace and requires @ sign. 
-            emailErrors.push('Please enter a valid email')
+        else if(/\s/.test(email)){
+            emailErrors.push('Email cannot contain spaces')
+        }
+        else if (!email.includes('@')) {
+            emailErrors.push('Email must contain @')
+        }
+        else if (email.indexOf('@') === 0) {
+            emailErrors.push('Email must have text before @')
+        }
+        else if (email.indexOf('@') === email.length - 1) {
+            emailErrors.push('Email must have text after @')
         }
         if (!password){
             passwordErrors.push('Password is required')
         }
-        if(/\s/.test(password)){
+        else if(/\s/.test(password)){
             passwordErrors.push('Password cannot contain spaces')
         }
-        if (password.length < 12){ // uses REGEX to allow whitespace and requires @ sign. 
+        else if (password.length < 12){ // uses REGEX to allow whitespace and requires @ sign. 
             passwordErrors.push('Password length must be > than 10 characters.')
         }
-        if(!/A-Z/.test(password)){
+        else if(!/[A-Z]/.test(password)){
             passwordErrors.push('Password must contain an uppercase letter')
         }
-        if(!/a-z/.test(password)){
+        else if(!/[a-z]/.test(password)){
             passwordErrors.push('Password must contain a lowercase letter')
         }
-        
-        if(!/^(?!.*[\s"'])\S+$/.test(password)){
+        else if(!/^(?!.*[\s"'])\S+$/.test(password)){
             passwordErrors.push('Password must contain a symbol')
         }
 
@@ -44,7 +52,7 @@ function Login() {
     return(
         <>
             <h1>Sign In</h1>
-            <form onSubmit={submit}>
+            <form onSubmit={submit} noValidate>
                 <div>
                     <label>Email</label>
                     <input 
@@ -54,6 +62,15 @@ function Login() {
                     />
                     {errors.email &&(
                         <p className="error">{errors.email[0]}</p>
+                    )}
+                    <label>Password</label>
+                    <input
+                    type = "password"
+                    value = {password}
+                    onChange = {(event) => setPassword(event.target.value)}
+                    />
+                    {errors.password &&(
+                        <p className="error">{errors.password[0]}</p>
                     )}
                 </div>
                 <button type="submit">Sign in</button>
