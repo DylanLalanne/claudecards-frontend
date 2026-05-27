@@ -1,12 +1,13 @@
 
 import {useState} from 'react'
-import EndScreen from './components/CardEndScreen'
-import FlashCard from './components/FlashCard'
 import {Route, Routes} from "react-router-dom"
-import Index from './pages/Index'
+import Home from './pages/Home'
 import Decks from './pages/Decks'
 import Login from './pages/Login'
-import Nav from './components/Nav'
+import Nav from './components/Nav/Nav.jsx'
+import Footer from './components/Footer/Footer.jsx'
+import EndScreen from './components/Card/CardEndScreen'
+import FlashCard from './components/Card/FlashCard'
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0)//increment
@@ -19,7 +20,7 @@ function App() {
     <>
       <Nav />
       <Routes>
-        <Route path="/" element = {<Index />} />
+        <Route path="/" element = {<Home />} />
         <Route path="/decks" element = {<Decks />} />
         <Route path="/login" element = {<Login />} />
       </Routes>

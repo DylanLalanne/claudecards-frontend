@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import FlashCard from '../components/FlashCard'
-import EndScreen from '../components/CardEndScreen'
+import FlashCard from '../components/Card/FlashCard'
+import EndScreen from '../components/Card/CardEndScreen'
 
 const cards = [
   {id: 1, question: "What is water made of?", answer:"H20"},
