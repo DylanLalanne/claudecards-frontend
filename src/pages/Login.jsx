@@ -6,32 +6,38 @@ function Login() {
     const [errors, setErrors] = useState({})
 
     function validate(){
-        const addErrors = {}
+        const passwordErrors = []
+        const emailErrors = []
         if (!email){
-            addErrors.email = 'Email is required'
+            emailErrors.push ('Email is required')
         }
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ // uses REGEX to allow whitespace and requires @ sign. 
-            addErrors.email = 'Please enter a valid email'
+            emailErrors.push('Please enter a valid email')
         }
         if (!password){
-            addErrors.password = 'Password is required'
+            passwordErrors.push('Password is required')
         }
         if (password.length < 12){ // uses REGEX to allow whitespace and requires @ sign. 
-            addErrors.password = 'Password length must be > than 10 characters.'
+            passwordErrors.push('Password length must be > than 10 characters.')
         }
         if(!/^(?!.*[\s"'])\S+$/.test(password)){
-            addErrors.password = 'Passwrod must contain a symbol'
+            passwordErrors.push('Passwrod must contain a symbol')
         }
         if(!/A-Z/.test(password)){
-            addErrors.password = 'Password must contain an uppercase letter'
+            passwordErrors.push('Password must contain an uppercase letter')
         }
         if(!/a-z/.test(password)){
-            addErrors.password = 'Password must contain a lowercase letter'
+            passwordErrors.push('Password must contain a lowercase letter')
         }
         if(/\s/.test(password)){
-            addErrors.password = 'Password cannot contain spaces'
+            passwordErrors.push('Password cannot contain spaces')
         }
-
+        if (passwordErrors.length > 0){
+            return passwordErros 
+        }
+    function submitHandler(event){
+        
+    }
     }
     return(
         <>
