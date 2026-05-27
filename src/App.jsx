@@ -1,6 +1,8 @@
+
 import {useState} from 'react'
 import EndScreen from './components/CardEndScreen'
 import FlashCard from './components/FlashCard'
+import {Route, Routes} from "react-router-dom"
 
 const cards = [
   {id: 1, question: "What is water made of?", answer:"H20"},
@@ -15,7 +17,11 @@ function App() {
   const [Correct, setShowCorrect] = useState(0)//variable
   const [Wrong, setShowWrong] = useState(0)//variable
   return(
-    <div>
+    <>
+      <Routes>
+        <Route path="/" element = {<Home />} />
+      </Routes>
+      
       {currentIndex < cards.length && (
       <div>
         <FlashCard
@@ -24,6 +30,7 @@ function App() {
           showAnswer={showAnswer}
           onToggleAnswer={() => setShowAnswer (!showAnswer)}
         />
+        
         <button onClick={() => 
         {setCurrentIndex(Math.max(0,currentIndex-1)) 
         setShowAnswer(false)}}>Previous</button>
@@ -61,6 +68,7 @@ function App() {
       />
     )}
   </div>
+  </>
   )
 }
 export default App
