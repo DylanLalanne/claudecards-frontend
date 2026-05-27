@@ -8,11 +8,6 @@ import Decks from './pages/Decks'
 import Login from './pages/Login'
 import Nav from './components/Nav'
 
-const cards = [
-  {id: 1, question: "What is water made of?", answer:"H20"},
-  {id: 2, question: "What is Air made of?", answer:"Nitrogen, oxygen, carbon dioxide"},
-  {id: 3, question: "What is an apple?", answer:"A delicious fruit"}
-]
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0)//increment
   const [showAnswer, setShowAnswer] = useState(false)//variable
@@ -28,53 +23,7 @@ function App() {
         <Route path="/decks" element = {<Decks />} />
         <Route path="/login" element = {<Login />} />
       </Routes>
-      
-      {currentIndex < cards.length && (
-      <div>
-        <FlashCard
-          question={cards[currentIndex].question}
-          answer={cards[currentIndex].answer}
-          showAnswer={showAnswer}
-          onToggleAnswer={() => setShowAnswer (!showAnswer)}
-        />
-        
-        <button onClick={() => 
-        {setCurrentIndex(Math.max(0,currentIndex-1)) 
-        setShowAnswer(false)}}>Previous</button>
-        <button onClick={() => 
-        {setCurrentIndex(currentIndex+1) 
-        setShowAnswer(false)}}>Skip</button>
-      </div>
-    )}
-    {showAnswer && (
-      <div>
-        <button onClick={() => {{
-          setShowCorrect(Correct+1)
-          setShowAnswer(false)
-          setCurrentIndex(currentIndex + 1)
-          }}}>Got it Right</button>
-          <button onClick={() => {{ 
-          setShowWrong(Wrong+1)
-          setShowAnswer(false)
-          setCurrentIndex(currentIndex + 1)
-          }}}>Got it Wrong
-        </button>
-      </div>
-    )}
-    {currentIndex>= cards.length && (
-      <EndScreen
-        correct = {Correct}
-        wrong = {Wrong}
-        totalCards = {cards.length}
-        onTryAgain={() => {
-          setCurrentIndex(0)
-          setShowAnswer(false)
-          setShowCorrect(0)
-          setShowWrong(0)
-        }}
-      />
-    )}
-  </>
+    </>
   )
 }
 export default App
