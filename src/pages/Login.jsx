@@ -5,7 +5,11 @@ function Login() {
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState({})
 
-    function validate(){
+    function submit(event){
+        setErrors(validate(event))
+    }
+    function validate(event){
+        event.preventDefault()
         const passwordErrors = []
         const emailErrors = []
         if (!email){
@@ -17,11 +21,11 @@ function Login() {
         if (!password){
             passwordErrors.push('Password is required')
         }
+        if(/\s/.test(password)){
+            passwordErrors.push('Password cannot contain spaces')
+        }
         if (password.length < 12){ // uses REGEX to allow whitespace and requires @ sign. 
             passwordErrors.push('Password length must be > than 10 characters.')
-        }
-        if(!/^(?!.*[\s"'])\S+$/.test(password)){
-            passwordErrors.push('Passwrod must contain a symbol')
         }
         if(!/A-Z/.test(password)){
             passwordErrors.push('Password must contain an uppercase letter')
@@ -29,19 +33,32 @@ function Login() {
         if(!/a-z/.test(password)){
             passwordErrors.push('Password must contain a lowercase letter')
         }
-        if(/\s/.test(password)){
-            passwordErrors.push('Password cannot contain spaces')
-        }
-        if (passwordErrors.length > 0){
-            return passwordErros 
-        }
-    function submitHandler(event){
         
-    }
+        if(!/^(?!.*[\s"'])\S+$/.test(password)){
+            passwordErrors.push('Password must contain a symbol')
+        }
+
+        
+    return({email:emailErrors,password: passwordErrors})
     }
     return(
         <>
             <h1>Sign In</h1>
+            <form onSubmit={submit}>
+                <div>
+                    <label>Email</label>
+                    <input 
+                    type = "email"
+                    value = {email} 
+                    onChange = {(event) => setEmail(event.target.value)}
+                    />
+                    {errors.email &&(
+                        <p className="error">{errors.email[0]}</p>
+                    )}
+                </div>
+                <button type="submit">Sign in</button>
+            </form>
+            
         </>
     )
 }
