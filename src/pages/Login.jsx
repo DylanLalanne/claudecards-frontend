@@ -42,9 +42,12 @@ function Login() {
         else if(!/[a-z]/.test(password)){
             passwordErrors.push('Password must contain a lowercase letter')
         }
-        else if(!/^(?!.*[\s"'])\S+$/.test(password)){
-            passwordErrors.push('Password must contain a symbol')
+        else if(!/[0-9]/.test(password)){
+            passwordErrors.push('Password must contain a number')
         }
+        else if(!/[^A-Za-z0-9]/.test(password)){
+            passwordErrors.push('Password must contain a symbol')
+}
 
         
     return({email:emailErrors,password: passwordErrors})
