@@ -1,0 +1,17 @@
+import { Link } from 'react-router-dom'
+
+function Nav() {
+  return (
+    <nav>
+      <div className="nav-links">
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/decks">My decks</Link></li>
+          <li><Link to="/login">Sign in</Link></li>
+        </ul>
+      </div>
+    </nav>
+  )
+}
+
+export default Nav
