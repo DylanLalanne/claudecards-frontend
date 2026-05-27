@@ -1,0 +1,18 @@
+:root {
+  /* Colors */
+  --bg: #E8F0EC;
+  --surface: #F2F7F4;
+  --primary: #2D5A5C;
+  --accent: #E8A580;
+  --text: #1F2C2E;
+
+  /* Spacing (consistent gaps) */
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+
+  /* Corner radii (consistent corners) */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
