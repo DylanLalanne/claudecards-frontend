@@ -3,6 +3,9 @@ import {useState} from 'react'
 import EndScreen from './components/CardEndScreen'
 import FlashCard from './components/FlashCard'
 import {Route, Routes} from "react-router-dom"
+import Index from './pages/Index'
+import Decks from './pages/Decks'
+import Login from './pages/Login'
 
 const cards = [
   {id: 1, question: "What is water made of?", answer:"H20"},
@@ -19,7 +22,9 @@ function App() {
   return(
     <>
       <Routes>
-        <Route path="/" element = {<Home />} />
+        <Route path="/" element = {<Index />} />
+        <Route path="/decks" element = {<Decks />} />
+        <Route path="/login" element = {<Login />} />
       </Routes>
       
       {currentIndex < cards.length && (
@@ -67,7 +72,6 @@ function App() {
         }}
       />
     )}
-  </div>
   </>
   )
 }

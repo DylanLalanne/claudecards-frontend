@@ -1,0 +1,4 @@
+function Decks() {
+  return <h1>Decks page</h1>
+}
+export default Decks
