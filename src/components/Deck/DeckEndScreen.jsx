@@ -1,4 +1,6 @@
-function EndScreen({ correct, wrong, totalCards, onTryAgain }) {
+import "./deck.css";
+
+function DeckEndScreen({ correct, wrong, totalCards, onTryAgain }) {
   return (
     <div>
       <p> You reviewed {totalCards} cards</p>
@@ -9,4 +11,4 @@ function EndScreen({ correct, wrong, totalCards, onTryAgain }) {
   )
 }
 
-export default EndScreen
+export default DeckEndScreen

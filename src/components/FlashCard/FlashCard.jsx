@@ -1,3 +1,4 @@
+import "./FlashCard.css";
 
 function FlashCard ({question, answer, showAnswer, onToggleAnswer}) {
 
