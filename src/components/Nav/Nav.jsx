@@ -5,7 +5,7 @@ function Nav() {
     <nav>
       <div className="nav-links">
         <ul>
-          <li><Link to="/">Home</Link></li>
+          <li><Link to="/" className = "brand">Claude Cards</Link></li>
           <li><Link to="/decks">My decks</Link></li>
           <li><Link to="/login">Sign in</Link></li>
         </ul>
