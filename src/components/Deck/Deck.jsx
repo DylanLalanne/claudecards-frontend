@@ -16,8 +16,7 @@ function Deck() {
       <h1>Study Deck</h1>
       {cards.map(card => (
         <div key={card._id}>
-          <h2>{card.name}</h2>
-          <p>{card.description}</p>
+          <p>{card.frontText}</p>
         </div>
       ))}
     </>
