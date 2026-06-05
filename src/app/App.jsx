@@ -2,7 +2,8 @@
 import {useState} from 'react'
 import {Route, Routes} from "react-router-dom"
 import Home from '../pages/Home.jsx'
-import Decks from '../pages/Decks.jsx'
+import Decks from '../components/Deck/Decks.jsx'
+import Deck from '../components/Deck/Deck.jsx'
 import Login from '../pages/Login.jsx'
 import Nav from '../components/Nav/Nav.jsx'
 import Footer from '../components/Footer/Footer.jsx'
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element = {<Home />} />
         <Route path="/decks" element = {<Decks />} />
         <Route path="/login" element = {<Login />} />
+        <Route path="/decks/:id" element={<Deck />} />
       </Routes>
     </>
   )
